@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       repos: []
     }
-
+    this.getRepos = this.getRepos.bind(this);
   }
 
   search (term) {
@@ -19,6 +19,16 @@ class App extends React.Component {
     $.post('/repos', {search: term});
     // Ignore success for now / Will call GET on return to load results
   }
+
+  // GET Request for Top 25 Repos
+  getRepos () {
+    $.get('/repos', topRepos => {
+      this.setState({
+        repos: topRepos
+      });
+    });
+  }
+  // Use component lifecycle to render on load/refresh
 
   render () {
     return (<div>
