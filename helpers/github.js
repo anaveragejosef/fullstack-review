@@ -18,7 +18,10 @@ let getReposByUsername = (username) => {
   };
 
   // Build out axios request
-  axios()
+  axios(options)
+    .then(response => {
+      console.log(response);
+    });
 
 }
 

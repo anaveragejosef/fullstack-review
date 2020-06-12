@@ -1,5 +1,6 @@
 const express = require('express');
 let app = express();
+let github = require('../helpers/github.js');
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
@@ -12,7 +13,7 @@ app.post('/repos', function (req, res) {
   // save the repo information in the database
 
   // console.log("POST request body - ", req.body);
-
+  github.getReposByUsername(req.body.search);
 });
 
 app.get('/repos', function (req, res) {
