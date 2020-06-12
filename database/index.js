@@ -37,4 +37,21 @@ let save = (reposArr) => {
   return Promise.all(repoPromise);
 }
 
+// Write function to search DB in Mongoose
+var getTopRepos = () => {
+  var q = Repo.
+    find({}).
+    sort({size: -1}).
+    limit(25);
+
+  console.log(q);
+
+
+}
+  // Sort the results by size in descending order
+    // Grab the first 25
+    // If there are less than 25, grab the length of the results
+    // Return/Send sorted results
+
 module.exports.save = save;
+module.exports.getTopRepos = getTopRepos;
