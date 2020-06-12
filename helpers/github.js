@@ -20,7 +20,7 @@ let getReposByUsername = (username) => {
   // Build out axios request
   return axios(options)
     .then(response => {
-      console.log('Response received');
+      // console.log('Response received');
       // console.log('Axios response.data - ', response.data);
       return response.data;
     })
