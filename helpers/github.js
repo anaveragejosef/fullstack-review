@@ -12,6 +12,8 @@ let getReposByUsername = (username) => {
     url: `https://api.github.com/users/${username}/repos`,
     headers: {
       'User-Agent': 'request',
+      // Add the config token to the config vars
+      // process.env.TOKEN
       'Authorization': `token ${config.TOKEN}`,
       'Accept': 'application/vnd.github.v3+json'
     }
