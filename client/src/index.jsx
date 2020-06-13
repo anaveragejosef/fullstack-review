@@ -16,7 +16,9 @@ class App extends React.Component {
   search (term) {
     // console.log(`${term} was searched`);
     // TODO - POST Request
-    $.post('/repos', {search: term});
+    $.post('/repos', {search: term}, success => {
+      this.getRepos();
+    });
     // Ignore success for now / Will call GET on return to load results
   }
 
@@ -29,6 +31,9 @@ class App extends React.Component {
     });
   }
   // Use component lifecycle to render on load/refresh
+  componentDidMount() {
+    this.getRepos();
+  }
 
   render () {
     return (<div>
