@@ -32,6 +32,8 @@ let save = (reposArr) => {
       favorites: repo.stargazers_count
     });
     return nextRepo.save()
+      .then(() => console.log('Sucessful save'))
+      .catch(err => console.log("Error on save", err));
   });
   // Return the promise once all repos have completed
   return Promise.all(repoPromise);
@@ -40,8 +42,8 @@ let save = (reposArr) => {
 // Write function to search DB in Mongoose
 // This works in the console:
 // db.repos.find({}).sort({repoSize: -1}).limit(10).pretty({})
-var getTopRepos = (callback) => {
-  console.log('----- In Query ------');
+let getTopRepos = (callback) => {
+  // console.log('----- In Query ------');
   return Repo.find({}).sort({repoSize: -1}).limit(25)
     .then(results => {
       return results;
