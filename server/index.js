@@ -34,7 +34,14 @@ app.get('/repos', function (req, res) {
   // This route should send back the top 25 repos
 
   // Call mongoose function to query DB ->
-  db.getTopRepos();
+  console.log('----- In GET Route ------');
+  db.getTopRepos()
+    .then(results => {
+      res.status(200).send(results);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    })
 });
 
 let port = 1128;
